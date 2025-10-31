@@ -1,11 +1,16 @@
+--// Simple Teleport UI Script
+
+-- Destroy old GUI if exists
 if game.CoreGui:FindFirstChild("TeleportUI") then
     game.CoreGui.TeleportUI:Destroy()
 end
 
+-- Create ScreenGui
 local gui = Instance.new("ScreenGui")
 gui.Name = "TeleportUI"
 gui.Parent = game.CoreGui
 
+-- Create main frame
 local frame = Instance.new("Frame")
 frame.Size = UDim2.new(0, 250, 0, 130)
 frame.Position = UDim2.new(0.5, -125, 0.5, -65)
@@ -15,9 +20,11 @@ frame.Active = true
 frame.Draggable = true
 frame.Parent = gui
 
+-- Frame corner
 local corner = Instance.new("UICorner", frame)
 corner.CornerRadius = UDim.new(0, 8)
 
+-- Title
 local title = Instance.new("TextLabel")
 title.Text = "Stud Teleporter"
 title.Size = UDim2.new(1, 0, 0, 30)
@@ -27,6 +34,7 @@ title.Font = Enum.Font.GothamBold
 title.TextSize = 16
 title.Parent = frame
 
+-- TextBox
 local textbox = Instance.new("TextBox")
 textbox.PlaceholderText = "Enter studs..."
 textbox.Size = UDim2.new(1, -20, 0, 30)
@@ -41,6 +49,7 @@ textbox.Parent = frame
 local tbCorner = Instance.new("UICorner", textbox)
 tbCorner.CornerRadius = UDim.new(0, 6)
 
+-- Button
 local button = Instance.new("TextButton")
 button.Text = "Teleport"
 button.Size = UDim2.new(1, -20, 0, 30)
@@ -54,6 +63,7 @@ button.Parent = frame
 local btnCorner = Instance.new("UICorner", button)
 btnCorner.CornerRadius = UDim.new(0, 6)
 
+-- Functionality
 button.MouseButton1Click:Connect(function()
     local studs = tonumber(textbox.Text)
     if not studs then
